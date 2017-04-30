@@ -3,3 +3,5 @@
 */Release/*
 */_codelite.project
 */*.mk
+*.o
+*/Doxyfile
