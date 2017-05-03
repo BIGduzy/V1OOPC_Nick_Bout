@@ -12,12 +12,6 @@ namespace Catch{ class JunitReporter{ ~JunitReporter(); }; };
 /*
  * VECTOR CLASS TEST CASES 
 */
-//TEST_CASE("Vector: constructor, zero_parameters") {
-//    Vector v();
-//    std::stringstream s;
-//    s << v;
-//    REQUIRE(s.str() == "(0,0)");
-//}
 
 TEST_CASE("Vector: constructor, two_parameters") {
     Vector v(6, 9);

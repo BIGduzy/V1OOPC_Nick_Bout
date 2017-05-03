@@ -35,7 +35,7 @@ Vector Vector::operator*(const int& rhs) const {
 }
 
 Vector operator*(const int& lhs, const Vector& rhs) {
-    return rhs * lhs; // TODO: Please do not forget
+    return rhs * lhs;
 }
 
 Vector& Vector::operator*=(const Vector& rhs) {
