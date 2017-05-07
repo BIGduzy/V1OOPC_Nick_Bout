@@ -1,5 +1,4 @@
 #include "ball.hpp"
-#include <iostream>
 
 ball::ball( window & w, const vector & midpoint, int radius, const vector & speed ):
    circle( w, midpoint, radius ),
@@ -7,7 +6,7 @@ ball::ball( window & w, const vector & midpoint, int radius, const vector & spee
 {}
 
 void ball::update(){
-   location += speed;
+    location += speed;
 }
 
 void ball::interact( drawable & other ){
