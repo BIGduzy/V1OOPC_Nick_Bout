@@ -11,9 +11,12 @@
 # the location of the ti software directory
 TI-SOFTWARE       := C:/ti-software
 
-# include Catch and hwlib in the searches
+# include Catch 
 SEARCH            += $(TI-SOFTWARE)/Catch/include
-SEARCH            += $(TI-SOFTWARE)/hwlib
+
+# include hwlib
+HWLIB             ?= $(TI-SOFTWARE)/hwlib
+include           $(HWLIB)/Makefile.inc
 
 # set BMPTK to the bmptk subdirectory
 BMPTK := C:/ti-software/bmptk
