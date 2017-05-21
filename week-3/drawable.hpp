@@ -15,6 +15,12 @@ protected:
 public:
    drawable( window & w, const vector & location, const vector & size );
    
+   /**
+    * @brief get the bounce vector
+    * @details
+    * Get function for the bounce variable
+    * @return vector
+    */
    virtual vector getBounce() const { return bounce; };
    virtual void setHit(const bool& newHit) { hit = newHit; }
    
