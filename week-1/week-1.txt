@@ -1,1 +1,0 @@
-./Release/main.cpp.o ./Release/circle.cpp.o ./Release/filled_rectangle.cpp.o ./Release/line.cpp.o ./Release/rectangle.cpp.o ./Release/train.cpp.o ./Release/train_butt.cpp.o ./Release/train_head.cpp.o ./Release/window.cpp.o   
