@@ -342,7 +342,7 @@ END GROUP
                 [!provide]                PROVIDE (__ram_size, __ram_size)
                 [!provide]                PROVIDE (__ram_end, __ram_end)
 
-.text           0x00000000      0x494
+.text           0x00000000      0x4bc
                 0x00000000                . = ALIGN (0x4)
                 0x00000000                __text_start = .
                 [!provide]                PROVIDE (__text_start, __text_start)
@@ -411,78 +411,82 @@ END GROUP
                 0x00000170       0x30 main.o
                 0x00000170                _ZN3due10pin_in_outC2ENS_4pinsE
                 0x00000170                _ZN3due10pin_in_outC1ENS_4pinsE
+ .text._Z7kittSetRN5hwlib8port_outERKi
+                0x000001a0       0x56 main.o
+                0x000001a0                _Z7kittSetRN5hwlib8port_outERKi
  .text._Z4kittRN5hwlib8port_outERKii
-                0x000001a0       0x6e main.o
-                0x000001a0                _Z4kittRN5hwlib8port_outERKii
+                0x000001f6       0x3e main.o
+                0x000001f6                _Z4kittRN5hwlib8port_outERKii
  .text._Z11buttonMagicRN5hwlib8port_outE
-                0x0000020e       0x7a main.o
-                0x0000020e                _Z11buttonMagicRN5hwlib8port_outE
+                0x00000234       0x7a main.o
+                0x00000234                _Z11buttonMagicRN5hwlib8port_outE
+ *fill*         0x000002ae        0x2 
  .text.startup.main
-                0x00000288       0x98 main.o
-                0x00000288                main
+                0x000002b0       0x98 main.o
+                0x000002b0                main
  .text.__startup
-                0x00000320       0x48 bmptk_cortex.o
-                0x00000320                __startup
-                0x00000368                . = ALIGN (0x4)
+                0x00000348       0x48 bmptk_cortex.o
+                0x00000348                __startup
+                0x00000390                . = ALIGN (0x4)
  *(.glue_7t .glue_7)
- .glue_7        0x00000368        0x0 linker stubs
- .glue_7t       0x00000368        0x0 linker stubs
-                0x00000368                . = ALIGN (0x4)
+ .glue_7        0x00000390        0x0 linker stubs
+ .glue_7t       0x00000390        0x0 linker stubs
+                0x00000390                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata._ZTVN5hwlib20_pin_out_dummy_classE
-                0x00000368       0x10 hwlib.o
-                0x00000368                _ZTVN5hwlib20_pin_out_dummy_classE
+                0x00000390       0x10 hwlib.o
+                0x00000390                _ZTVN5hwlib20_pin_out_dummy_classE
  .rodata._ZTVN3due7pin_outE
-                0x00000378       0x10 hwlib.o
-                0x00000378                _ZTVN3due7pin_outE
+                0x000003a0       0x10 hwlib.o
+                0x000003a0                _ZTVN3due7pin_outE
  .rodata._ZN3due8pin_infoENS_4pinsE.str1.1
-                0x00000388       0x33 hwlib.o
+                0x000003b0       0x33 hwlib.o
  .rodata._ZZN3due8pin_infoENS_4pinsEE14pin_info_array
-                0x000003bb       0xa4 hwlib.o
- *fill*         0x0000045f        0x1 
+                0x000003e3       0xa4 hwlib.o
+ *fill*         0x00000487        0x1 
  .rodata._ZTVN5hwlib18port_out_from_pinsE
-                0x00000460       0x14 main.o
-                0x00000460                _ZTVN5hwlib18port_out_from_pinsE
+                0x00000488       0x14 main.o
+                0x00000488                _ZTVN5hwlib18port_out_from_pinsE
  .rodata._ZTVN3due10pin_in_outE
-                0x00000474       0x20 main.o
-                0x00000474                _ZTVN3due10pin_in_outE
-                0x00000494                . = ALIGN (0x4)
+                0x0000049c       0x20 main.o
+                0x0000049c                _ZTVN3due10pin_in_outE
+                0x000004bc                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00000494                . = ALIGN (0x4)
+                0x000004bc                . = ALIGN (0x4)
  *(.gcc_except_table)
-                0x00000494                . = ALIGN (0x4)
+                0x000004bc                . = ALIGN (0x4)
  *(.eh_frame_hdr)
-                0x00000494                . = ALIGN (0x4)
+                0x000004bc                . = ALIGN (0x4)
  *(.eh_frame)
-                0x00000494                . = ALIGN (0x4)
-                0x00000494                __text_end = .
+                0x000004bc                . = ALIGN (0x4)
+                0x000004bc                __text_end = .
                 [!provide]                PROVIDE (__text_end, __text_end)
 
-.vfp11_veneer   0x00000494        0x0
- .vfp11_veneer  0x00000494        0x0 linker stubs
+.vfp11_veneer   0x000004bc        0x0
+ .vfp11_veneer  0x000004bc        0x0 linker stubs
 
-.v4_bx          0x00000494        0x0
- .v4_bx         0x00000494        0x0 linker stubs
+.v4_bx          0x000004bc        0x0
+ .v4_bx         0x000004bc        0x0 linker stubs
 
-.iplt           0x00000494        0x0
- .iplt          0x00000494        0x0 hwlib.o
+.iplt           0x000004bc        0x0
+ .iplt          0x000004bc        0x0 hwlib.o
 
-.rel.dyn        0x00000494        0x0
- .rel.iplt      0x00000494        0x0 hwlib.o
+.rel.dyn        0x000004bc        0x0
+ .rel.iplt      0x000004bc        0x0 hwlib.o
 
 .IF_YOU_SEE_THIS_YOU_HAVE_ONE_OR_MORE_GLOBAL_OBJECT_CONSTRUCTORS
  *(.init)
  *(.preinit_array)
  *(SORT(.init_array.*))
  *(.init_array)
-                0x00000494                . = ALIGN (0x4)
-                0x00000494                __exidx_start = .
+                0x000004bc                . = ALIGN (0x4)
+                0x000004bc                __exidx_start = .
                 [!provide]                PROVIDE (__exidx_start, __exidx_start)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000494                . = ALIGN (0x4)
-                0x00000494                __exidx_end = .
+                0x000004bc                . = ALIGN (0x4)
+                0x000004bc                __exidx_end = .
                 [!provide]                PROVIDE (__exidx_end, __exidx_end)
 
 .bss            0x20000000    0x12000
@@ -510,9 +514,9 @@ END GROUP
                 0x20012000                __bss_end = .
                 [!provide]                PROVIDE (__bss_end, __bss_end)
 
-.data           0x20012000        0x4 load address 0x00000494
+.data           0x20012000        0x4 load address 0x000004bc
                 0x20012000                . = ALIGN (0x4)
-                0x00000494                __data_init_start = LOADADDR (.data)
+                0x000004bc                __data_init_start = LOADADDR (.data)
                 [!provide]                PROVIDE (__data_init_start, __data_init_start)
                 0x20012000                __data_start = .
                 [!provide]                PROVIDE (__data_start, __data_start)
@@ -524,13 +528,13 @@ END GROUP
                 0x20012004                . = ALIGN (0x4)
                 0x20012004                __data_end = .
                 [!provide]                PROVIDE (__data_end, __data_end)
-                0x00000494                __data_init_end = LOADADDR (.data)
+                0x000004bc                __data_init_end = LOADADDR (.data)
                 [!provide]                PROVIDE (__data_init_end, __data_init_end)
                 0x00000004                PROVIDE (__data_size, (__data_end - __data_start))
                 0x00000004                PROVIDE (__data_init_size, __data_size)
                 [!provide]                PROVIDE (__data_init_end, (__data_init_start + __data_init_size))
 
-.igot.plt       0x20012004        0x0 load address 0x00000498
+.igot.plt       0x20012004        0x0 load address 0x000004c0
  .igot.plt      0x20012004        0x0 hwlib.o
                 0x20012004                . = ALIGN (0x4)
                 0x20012004                __heap_start = .

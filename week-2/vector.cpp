@@ -12,12 +12,12 @@ bool Vector::operator==(const Vector& rhs) const {
 }
 
 Vector Vector::operator+() const {
-    Vector temp(x, y);
+    Vector temp = *this;
     return temp;
 }
 
 Vector Vector::operator+(const Vector& rhs) const {
-    Vector temp(x, y);
+    Vector temp = *this;
     return temp += rhs;
 }
 
@@ -28,7 +28,7 @@ Vector& Vector::operator+=(const Vector& rhs) {
 }
 
 Vector Vector::operator*(const int& rhs) const {
-    Vector temp(x, y);
+    Vector temp = *this;
     temp.x *= rhs;
     temp.y *= rhs;
     return temp;
