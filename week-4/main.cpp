@@ -71,31 +71,55 @@ void kitt(hwlib::port_out& leds, const int& ms, int intervals = -1) {
  * Press the right button to turn on the most right LED
  */
 void buttonMagic(hwlib::port_out& leds) {
-    auto buttonLeft = hwlib::target::pin_in_out(hwlib::target::pins::d28);
+    auto buttonLeft = hwlib::target::pin_in_out(hwlib::target::pins::d31);
     buttonLeft.direction_set_input();
-    auto buttonRight = hwlib::target::pin_in_out(hwlib::target::pins::d29);
+    auto buttonRight = hwlib::target::pin_in_out(hwlib::target::pins::d30);
     buttonRight.direction_set_input();
     
     unsigned int mode = 0x00;
     unsigned int num = 0;
     
+    bool pressed = false;
+    
+    // Could not find the overflow problem, Please forgive me
+    
     while(true) {
         if (!buttonLeft.get() && !buttonRight.get()) {
             break;
-        } else if (!buttonLeft.get() && num < leds.number_of_pins()) {
+        } else if (!buttonRight.get() && num < leds.number_of_pins() && !pressed) {
+            hwlib::cout << " More ";
+            // Set pressed variable to prevent double presses
+            pressed = true;
             ++num;
             // Display more LED's
             mode <<= 1;
             mode |= 1; // set lsb to 1
-        } else if (!buttonRight.get() && num > 0) {
+            
+            // Wait a bit
+            hwlib::wait_ms(100);
+        } else if (!buttonLeft.get() && num > 0 && !pressed) {
+            hwlib::cout << " LESS ";
+            // Same as above
+            pressed = true;
             --num;
             // Display less LED's
             mode >>= 1;
+            
+            // Wait a bit
+            hwlib::wait_ms(100);
         }
         
-        leds.set(mode);
+        // Buttons released
+        if(pressed && buttonRight.get() && buttonLeft.get()) {
+            hwlib::cout << " Released ";
+            pressed = false;
+        
+            // Actualy set the leds
+            leds.set(mode);
+        }
     }
-
+    
+    leds.set(0x00); // Turn of LED's
 }
 
 int main( void ){
@@ -111,8 +135,7 @@ int main( void ){
     auto leds = hwlib::port_out_from_pins( led0, led1, led2, led3 );
     
     // We can't go to fast, else we won't see if its working
-    kitt(leds, 1000, 10); // 2.4.3.Patroon
+    kitt(leds, 1000, 10); // 2.4.3.Patroon    
     
-    
-    buttonMagic(leds); // 2.4.4.Input
+    buttonMagic(leds); // 2.4.4.Input    
 }
