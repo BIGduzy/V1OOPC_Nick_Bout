@@ -30,4 +30,10 @@
       <Project Name="week-5" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix> 
+  <Project Name="week-6" Path="week-6/_codelite.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Project Name="week-6" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix> 
 </CodeLite_Workspace>
