@@ -1,6 +1,7 @@
-#include "hwlib.hpp"
+#include <hwlib.hpp>
 #include "two_pin_in.hpp"
 #include "pin_out_invert.hpp"
+#include "pin_out_all.hpp"
 
 /**
  * @brief Executes 1 set of the kitt patern
@@ -127,22 +128,29 @@ int main( void ){
     
     auto led0 = hwlib::target::pin_out(hwlib::target::pins::d24);
     auto led1 = hwlib::target::pin_out(hwlib::target::pins::d25);
-    auto led1Invert = pin_out_invert(led1);
 
-    auto ds   = hwlib::target::pin_out( hwlib::target::pins::d41 );
-    auto shcp = hwlib::target::pin_out( hwlib::target::pins::d42 );
-    auto stcp = hwlib::target::pin_out( hwlib::target::pins::d40 );
+    auto ds   = hwlib::target::pin_out( hwlib::target::pins::d8 );
+    auto shcp = hwlib::target::pin_out( hwlib::target::pins::d9 );
+    auto stcp = hwlib::target::pin_out( hwlib::target::pins::d10 );
     auto spi  = hwlib::spi_bus_bit_banged_sclk_mosi_miso( 
-        stcp, 
+        shcp, 
         ds, 
         hwlib::pin_in_dummy 
     );
-    auto hc595 = hwlib::hc595( spi, shcp );
+    auto hc595 = hwlib::hc595( spi, stcp );
+    // Register starts on for some reason
+    hc595.p0.set(0);
+    hc595.p1.set(0);
     
     // Did not have enough hardware for 8 LED's, but the logic should be the same
-    auto leds = hwlib::port_out_from_pins(hc595.p0, hc595.p1, led0, led1Invert);
+    auto leds = hwlib::port_out_from_pins(hc595.p0, hc595.p1, led0, led1);
     
-    // buttonMagic(leds); // 2.5.1. HC595 / 2.5.2. Decorator
+    buttonMagic(leds); // 2.5.1. HC595 / 2.5.2. Decorator
 
-    kitt(leds, 1000, 10); // 2.5.1. Knipperen
+    // 2.5.1. Knipperen    
+    auto led0Invert = pin_out_invert(led0);
+    auto led1Invert = pin_out_invert(led1);
+    
+    auto out_all = pin_out_all(hc595.p0, hc595.p1, led0Invert, led1Invert);
+    hwlib::blink(out_all);
 }
